@@ -13,8 +13,7 @@ public class Borda {
      *     - calcul la somme de chaque choix
      *     - à partir des ces sommes, détermine le vainqueur
      *     - affiche le tableau de résultats ainsi que le vainqueur
-     * @param mat
-     * @return
+     * @param mat : matrice contenant les informations
      */
     public static void voteBorda(Matrix mat){
         mat.GenAutoListePreferences();
@@ -29,8 +28,8 @@ public class Borda {
         System.out.println("La durée est de : " + duree + " millisecondes");
 
         System.out.print("Tableau de résultats : ");
-        for (int i = 0; i < resultats.length;i++) {
-            System.out.print(resultats[i] + " ");
+        for(Integer i : resultats){
+            System.out.print(i +" ");
         }
         System.out.println();
         System.out.println("Le vainqueur est le " + (vainqueur+1) + " avec : " + resultats[vainqueur]);

@@ -4,7 +4,10 @@ import algo.Borda;
 import algo.PlurinominaleUnTour;
 import algo.UninominaleDeuxTours;
 import algo.UninominaleUnTour;
+import exception.MatrixFormatException;
 import structure.Matrix;
+
+import static algo.UninominaleUnTour.voteUninominaleUnTour;
 
 /**
  * Created by stephane on 12/05/17.
@@ -14,18 +17,20 @@ public class Main {
     static Matrix initValeur(){
         int votants = 50;
         int choix = 5;
-        Matrix mat = new Matrix(votants,choix);
+        Matrix mat = null;
+        try {
+            mat = new Matrix(votants,choix);
+        } catch (MatrixFormatException e) {
+            e.printStackTrace();
+        }
         mat.init();
         return mat;
     }
 
-    public static long testUninominaleUnTour(){
+    public static void testUninominaleUnTour(){
         Matrix mat = initValeur();
 
-
-        long tps = UninominaleUnTour.voteUninominaleUnTour(mat);
-        return tps;
-
+        Integer resultats[] = UninominaleUnTour.voteUninominaleUnTour(mat);
     }
 
     public static void testPlurinominaleUnTour() {

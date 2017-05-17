@@ -1,16 +1,13 @@
 package structure;
 
 
-import java.util.ArrayList;
+import exception.MatrixFormatException;
+import exception.RapportVottantChoixDisproportionneException;
 
+import java.util.ArrayList;
 
 /**
  * Created by stephane on 12/05/17.
- */
-
-/**
-
-
  */
 
 /**
@@ -39,26 +36,42 @@ public class Matrix {
 
     /**
      * Constructeur de matrice à partir d'un autre tableau à deux dimension
-     * @param tab
+     * @param tab : tableau à deux dimensions représentant la matrice
+     * @param votants : nombre de votants
+     * @param choix : nombre de choix
      */
-    public Matrix(int[][] tab) {
+    public Matrix(int[][] tab, int votants, int choix) {
         this.tab = tab;
+        this.votants =votants;
+        this.choix = choix;
     }
 
     /**
      * Constructeur de matrice à partir du nombre de votants et du nombre de choix. Initialise un tableau à deux
      * dimensions vide.
-     * @param nbVotants
-     * @param nbChoix
+     * @param nbVotants : nombre de votants
+     * @param nbChoix : nombre de choix
+     * @throws MatrixFormatException : exception vérifiant le format de la matrice
      */
-    public Matrix(int nbVotants, int nbChoix){
+    public Matrix(int nbVotants, int nbChoix) throws MatrixFormatException {
 
         this.votants = nbVotants;
         this.choix =nbChoix;
         tab = new int[this.choix][this.votants];
-
+        checkout();
     }
 
+    /**
+     * Méthode vérifiant le format de la matrice
+     * @throws MatrixFormatException : exception vérifiant le format de la matrice
+     */
+    private void checkout() throws MatrixFormatException {
+
+        if(this.getVotants() < this.getChoix()){
+            throw new RapportVottantChoixDisproportionneException();
+        }
+
+    }
     /**
      * Méthode permettant de récupérer le tableau à deux dimensions
      * @return tab : tableau à deux dimensions
@@ -87,14 +100,15 @@ public class Matrix {
 
     /**
      * Méthode permettant de récupérer le nombre de choix du choix social
-     * @return
+     * @return le nombre de choix
      */
     public int getChoix() {
         return choix;
     }
 
     /**
-     * Méthode permettant d'insérer une valeur val dans la case d'abscisse i et d'ordonnée j du tableau à deux
+     * Méthode permettant d'insérer une valeur val dans la
+     * case d'abscisse i et d'ordonnée j du tableau à deux
      * dimension
      * @param val : la valeur que l'on souhaite insérer
      * @param i : l'abscisse à laquelle on souhaite l'insérer
@@ -104,17 +118,6 @@ public class Matrix {
         tab[i][j] = val;
     }
 
-    /**
-     * Méthode permettant d'afficher un tableau à deux dimensions sur la sortie écran
-     */
-    public void afficher() {
-        for(int i=0;i<this.choix;i++){
-            for(int j=0;j<this.votants;j++){
-                System.out.print(tab[i][j]);
-            }
-            System.out.println();
-        }
-    }
 
     /**
      * Méthode permettant de remplir un tableau à deux dimensions avec des 0
@@ -142,8 +145,11 @@ public class Matrix {
     }
 
     /**
-     * Méthode qui place, dans un tableau à deux dimensions initialement rempli de zéro, nbChoixPossible valeur 1
-     * correspondant aux choix. Ces valeurs sont choisis aléatoirement pour chaque votant
+     * Méthode qui place, dans un tableau à deux dimensions
+     * initialement rempli de zéro, nbChoixPossible valeur 1
+     * correspondant aux choix. Ces valeurs sont
+     * choisis aléatoirement pour chaque votant
+     *
      * @param nbChoixPossible : nombre de choix à remplir
      */
     public void GenAutoChoixMultiple(int nbChoixPossible) {
@@ -163,8 +169,10 @@ public class Matrix {
     }
 
     /**
-     * Méthode génère dans un tableau à deux dimensions une liste de préférences. Cette liste est réprésenté par une
-     * valeur comprise entre 1 et le nombre de choix du choix social. Ces valeurs sont réparties aléatoirement pour
+     * Méthode génère dans un tableau à deux dimensions une
+     * liste de préférences. Cette liste est réprésenté par une
+     * valeur comprise entre 1 et le nombre de choix du choix social.
+     * Ces valeurs sont réparties aléatoirement pour
      * chacun des candidats pour chacun des choix possibles
      */
     public void GenAutoListePreferences(){
@@ -183,5 +191,21 @@ public class Matrix {
         }
     }
 
-
+    /**
+     * Méthode permettant d'afficher les informations d'une matrix sur la sortie écran
+     */
+    @Override
+    public String toString() {
+        int[][] tab = getTab();
+        String concat= "";
+        for (int i[] : tab){
+            for (Integer j : i){
+                concat += j.toString() + " ";
+            }
+            concat += "\n";
+        }
+        return "Nombre de votants : " + votants + "\n" +
+                "Nombre de choix : " + choix + "\n\n" +
+                concat;
+    }
 }
