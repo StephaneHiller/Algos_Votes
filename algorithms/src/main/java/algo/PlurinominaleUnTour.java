@@ -11,9 +11,9 @@ public class PlurinominaleUnTour {
 
         System.out.println("Nombre de choix : " + nbChoixPossible);
         mat.GenAutoChoixMultiple(nbChoixPossible);
-        mat.afficher();
+        //mat.afficher();
 
-        Integer resultats[] = Somme.somme(mat);
+        Integer resultats[] = Somme.sommeDeUn(mat);
 
         Integer vainqueur = Somme.vainqueur(resultats);
 
@@ -24,5 +24,8 @@ public class PlurinominaleUnTour {
         System.out.println();
         System.out.println("Le vainqueur est " + vainqueur);
     }
+
+
+
 
 }

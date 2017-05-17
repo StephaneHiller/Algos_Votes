@@ -9,16 +9,16 @@ import java.util.Collections;
 /**
  * Created by stephane on 12/05/17.
  */
-public class UninominaleDeuxTour {
+public class UninominaleDeuxTours {
 
 
     public static void voteUninominaleDeuxTour(Matrix mat) {
 
         System.out.println("Majorité à obtenir : " + mat.getVotants()/2);
         mat.GenAutoChoixUnique();
-        mat.afficher();
+        //mat.afficher();
 
-        Integer[] resultats = Somme.somme(mat);
+        Integer[] resultats = Somme.sommeDeUn(mat);
 
         Arrays.sort(resultats, Collections.reverseOrder());
 
@@ -33,8 +33,8 @@ public class UninominaleDeuxTour {
             System.out.println("----- Deuxième tour -----");
             Matrix deuxiemeTour = new Matrix(mat.getVotants(), 2);
             deuxiemeTour.GenAutoChoixUnique();
-            deuxiemeTour.afficher();
-            resultats = Somme.somme(deuxiemeTour);
+            //deuxiemeTour.afficher();
+            resultats = Somme.sommeDeUn(deuxiemeTour);
 
             System.out.print("Tableau de résultats : ");
             for (int i = 0; i < resultats.length; i++) {

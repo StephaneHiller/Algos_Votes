@@ -1,7 +1,8 @@
 package test;
 
+import algo.Borda;
 import algo.PlurinominaleUnTour;
-import algo.UninominaleDeuxTour;
+import algo.UninominaleDeuxTours;
 import algo.UninominaleUnTour;
 import structure.Matrix;
 
@@ -10,27 +11,26 @@ import structure.Matrix;
  */
 public class Main {
 
-
-    public static void testUninominaleUnTour(){
-        int votants = 10;
-        int choix = 3;
+    static Matrix initValeur(){
+        int votants = 50;
+        int choix = 5;
         Matrix mat = new Matrix(votants,choix);
         mat.init();
+        return mat;
+    }
 
-        long debut = System.currentTimeMillis();
+    public static long testUninominaleUnTour(){
+        Matrix mat = initValeur();
 
-        UninominaleUnTour.voteUninominaleUnTour(mat);
 
-        long duree = System.currentTimeMillis() - debut;
-        System.out.println("La durée est de : " + duree + " millisecondes");
+        long tps = UninominaleUnTour.voteUninominaleUnTour(mat);
+        return tps;
+
     }
 
     public static void testPlurinominaleUnTour() {
 
-        int votants = 10;
-        int choix = 3;
-        Matrix mat = new Matrix(votants,choix);
-        mat.init();
+        Matrix mat = initValeur();
 
         long debut = System.currentTimeMillis();
 
@@ -42,17 +42,21 @@ public class Main {
     }
 
     public static void testUninominaleDeuxTour(){
-        int votants = 50;
-        int choix = 3;
-        Matrix mat = new Matrix(votants,choix);
-        mat.init();
+        Matrix mat = initValeur();
 
         long debut = System.currentTimeMillis();
 
-        UninominaleDeuxTour.voteUninominaleDeuxTour(mat);
+        UninominaleDeuxTours.voteUninominaleDeuxTour(mat);
 
         long duree = System.currentTimeMillis() - debut;
         System.out.println("La durée est de : " + duree + " millisecondes");
+    }
+
+    public static void testBorda(){
+
+        Matrix mat = initValeur();
+
+        Borda.voteBorda(mat);
     }
 
     public static void main(String[] args) {
@@ -60,17 +64,14 @@ public class Main {
         System.out.println("========= Uninominale à un tour ========= ");
         Main.testUninominaleUnTour();
 
-        System.out.println();
-        System.out.println();
-
-        System.out.println("========= Plurinominale à un tour ========= ");
+        System.out.println("\n\n========= Plurinominale à un tour ========= ");
         Main.testPlurinominaleUnTour();
 
-        System.out.println();
-        System.out.println();
-
-        System.out.println("========= Uninominale à deux tour ========= ");
+        System.out.println("\n\n========= Uninominale à deux tour ========= ");
         Main.testUninominaleDeuxTour();
+
+        System.out.println("\n\n========= Borda ========= ");
+        Main.testBorda();
 
     }
 }
