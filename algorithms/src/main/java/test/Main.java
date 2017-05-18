@@ -37,13 +37,7 @@ public class Main {
 
         Matrix mat = initValeur();
 
-        long debut = System.currentTimeMillis();
-
-        //PlurinominaleUnTour.votePlurinominaleUnTour(mat,2);
-
-        long duree = System.currentTimeMillis() - debut;
-        System.out.println("La durée est de : " + duree + " millisecondes");
-
+        PlurinominaleUnTour.votePlurinominaleUnTour(mat,3);
     }
 
     public static void testUninominaleDeuxTour(){
@@ -68,15 +62,15 @@ public class Main {
 
         System.out.println("========= Uninominale à un tour ========= ");
         Main.testUninominaleUnTour();
-/*
+
         System.out.println("\n\n========= Plurinominale à un tour ========= ");
         Main.testPlurinominaleUnTour();
-
+/*
         System.out.println("\n\n========= Uninominale à deux tour ========= ");
         Main.testUninominaleDeuxTour();
-
+*/
         System.out.println("\n\n========= Borda ========= ");
         Main.testBorda();
-*/
+
     }
 }

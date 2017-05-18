@@ -1,6 +1,11 @@
 package algo;
 
 import structure.Matrix;
+import structure.Resultats;
+import structure.ValueComparator;
+
+import java.util.HashMap;
+import java.util.TreeMap;
 
 /**
  * Created by stephane on 15/05/17.
@@ -15,24 +20,34 @@ public class Borda {
      *     - affiche le tableau de résultats ainsi que le vainqueur
      * @param mat : matrice contenant les informations
      */
-    public static void voteBorda(Matrix mat){
+    public static Resultats voteBorda(Matrix mat){
+
         mat.GenAutoListePreferences();
-        //mat.afficher();
+        System.out.println(mat.toString());
 
-        long debut = System.currentTimeMillis();
-        Integer resultats[] = Somme.somme(mat);
+        HashMap<Integer, Integer> stats = Somme.somme(mat);
 
-      //  Integer vainqueur = Somme.vainqueur(resultats);
+        Integer vainqueur = Somme.vainqueur(stats);
 
-        long duree = System.currentTimeMillis() - debut;
-        System.out.println("La durée est de : " + duree + " millisecondes");
+        ValueComparator comparateur = new ValueComparator(stats);
+        TreeMap<Integer,Integer> mapTriee = new TreeMap<Integer,Integer>(comparateur);
+        mapTriee.putAll(stats);
+
+        TreeMap<Integer,Integer> resultats = new TreeMap<Integer, Integer>();
+        resultats.put(1,mapTriee.firstKey());
 
         System.out.print("Tableau de résultats : ");
-        for(Integer i : resultats){
-            System.out.print(i +" ");
-        }
+        System.out.println(resultats);
+
+        System.out.print("Tableau de Statistiques : ");
+        System.out.println(mapTriee);
+
+        Resultats res = new Resultats(mapTriee,stats);
+
         System.out.println();
-        //System.out.println("Le vainqueur est le " + (vainqueur+1) + " avec : " + resultats[vainqueur]);
+        System.out.println("Le vainqueur est le " + vainqueur + " avec : " + stats.get(vainqueur));
+
+        return res;
     }
 
 

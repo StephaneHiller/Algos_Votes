@@ -66,19 +66,31 @@ public class Somme {
      * @param mat : matrice contenant la tableau
      * @return le tableau de résultats contenant la somme pour chaque choix
      */
-    static Integer[] somme(Matrix mat){
+    static HashMap<Integer,Integer> somme(Matrix mat){
 
-        Integer resultats[] = new Integer[mat.getChoix()];
+        ArrayList<Integer> tmp = new ArrayList<Integer>();
+        HashMap<Integer,Integer> resultats = new HashMap<Integer, Integer>();
+
         for (int i = 0; i < mat.getChoix();i++) {
-            resultats[i] = 0;
+            tmp.add(0);
         }
+
+        int cpt;
         for (int i = 0; i < mat.getChoix(); i++) {
             for (int j = 0; j < mat.getVotants(); j++) {
-                resultats[i]+= mat.getCase(i,j);
+                cpt = tmp.get(i);
+                cpt += mat.getCase(i,j);
+                tmp.set(i,cpt);
+
             }
         }
 
+        for (int i = 0; i < tmp.size(); i++) {
+            resultats.put(i,tmp.get(i));
+        }
+
         return resultats;
+
     }
 
 
