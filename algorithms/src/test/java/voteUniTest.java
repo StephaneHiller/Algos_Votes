@@ -24,16 +24,12 @@ public class voteUniTest extends TestCase {
 
         System.out.println(mat.toString());
 
-        Integer[] resultats = UninominaleUnTour.voteUninominaleUnTour(mat);
-        Integer[] resultatsEscompte = {2,2,2,3,1};
+       // int vainqueur = UninominaleUnTour.voteUninominaleUnTour(mat);
+        int vainqueurEscompte = 4;
         int cpt = 0;
         int j = 0;
 
-        for (int i=0 ; i<resultats.length;i++){
-            assertEquals("Le resultat devrait etre " + resultatsEscompte[i], resultats[i], resultatsEscompte[i]);
-            cpt++;
-        }
-        assertEquals("Le nombre de tests reussi devraient être 5", cpt,5);
+       // assertEquals("Le resultat devrait etre " + vainqueurEscompte, vainqueur, vainqueurEscompte);
 
     }
 

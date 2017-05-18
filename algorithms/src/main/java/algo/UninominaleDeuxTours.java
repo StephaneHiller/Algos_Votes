@@ -23,8 +23,8 @@ public class UninominaleDeuxTours {
      *     - affiche le tableau de résultats ainsi que le vainqueur
      * @param mat : matrice contenant les informations
      */
-    public static void voteUninominaleDeuxTour(Matrix mat) {
-
+    public static int voteUninominaleDeuxTour(Matrix mat) {
+/*
         System.out.println("Majorité à obtenir : " + mat.getVotants()/2);
         mat.GenAutoChoixUnique();
         //mat.afficher();
@@ -59,9 +59,13 @@ public class UninominaleDeuxTours {
             Integer vainqueur = Somme.vainqueur(resultats);
             System.out.println();
             System.out.println("Le vainqueur est le " + (vainqueur+1) + " avec : " + resultats[vainqueur]);
+            return vainqueur+1;
         } else {
             System.out.println("Le vainqueur est le 1 avec : " + resultats[0]);
-        }
+            return 1;
+        }*/
+    return 0;
+
 
     }
 

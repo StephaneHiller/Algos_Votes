@@ -18,7 +18,7 @@ public class PlurinominaleUnTour {
      * @param mat : matrice contenant les informations
      * @param nbChoixPossible : le nombre de choix qui devront être générés dans le tableau
      */
-    public static void votePlurinominaleUnTour(Matrix mat, int nbChoixPossible) {
+   /* public static void votePlurinominaleUnTour(Matrix mat, int nbChoixPossible) {
 
         System.out.println("Nombre de choix : " + nbChoixPossible);
         mat.GenAutoChoixMultiple(nbChoixPossible);
@@ -34,7 +34,7 @@ public class PlurinominaleUnTour {
         }
         System.out.println();
         System.out.println("Le vainqueur est le " + (vainqueur+1) + " avec : " + resultats[vainqueur]);
-    }
+    }*/
 
 
 

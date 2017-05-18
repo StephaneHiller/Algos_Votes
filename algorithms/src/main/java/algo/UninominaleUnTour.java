@@ -1,6 +1,10 @@
 package algo;
 
 import structure.Matrix;
+import structure.Resultats;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by stephane on 12/05/17.
@@ -15,28 +19,30 @@ public class UninominaleUnTour {
      *     - affiche le tableau de résultats ainsi que le vainqueur
      * @param mat : matrice contenant les informations
      */
-    public static Integer[] voteUninominaleUnTour(Matrix mat) {
+    public static Resultats voteUninominaleUnTour(Matrix mat) {
 
-        //mat.GenAutoChoixUnique();
+        HashMap<Integer,Integer> stats = new HashMap<Integer, Integer>();
+        mat.GenAutoChoixUnique();
+
+        System.out.println(mat.toString());
 
         long debut = System.currentTimeMillis();
-        Integer[] resultats = Somme.sommeDeUn(mat);
+        HashMap<Integer, Integer> resultats = Somme.sommeDeUn(mat);
 
         Integer vainqueur = Somme.vainqueur(resultats);
 
         long duree = System.currentTimeMillis() - debut;
-       System.out.println("La durée est de : " + duree + " millisecondes");
+        System.out.println("La durée est de : " + duree + " millisecondes");
 
         System.out.print("Tableau de résultats : ");
-        for(Integer i : resultats){
-            System.out.print(i +" ");
-        }
+        System.out.println(resultats);
 
+        Resultats res = new Resultats(resultats,stats);
 
         System.out.println();
-        System.out.println("Le vainqueur est le " + (vainqueur+1) + " avec : " + resultats[vainqueur]);
+        System.out.println("Le vainqueur est le " + vainqueur + " avec : " + resultats.get(vainqueur));
 
-        return resultats;
+        return res;
     }
 
 

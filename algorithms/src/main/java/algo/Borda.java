@@ -22,7 +22,7 @@ public class Borda {
         long debut = System.currentTimeMillis();
         Integer resultats[] = Somme.somme(mat);
 
-        Integer vainqueur = Somme.vainqueur(resultats);
+      //  Integer vainqueur = Somme.vainqueur(resultats);
 
         long duree = System.currentTimeMillis() - debut;
         System.out.println("La durée est de : " + duree + " millisecondes");
@@ -32,7 +32,7 @@ public class Borda {
             System.out.print(i +" ");
         }
         System.out.println();
-        System.out.println("Le vainqueur est le " + (vainqueur+1) + " avec : " + resultats[vainqueur]);
+        //System.out.println("Le vainqueur est le " + (vainqueur+1) + " avec : " + resultats[vainqueur]);
     }
 
 
