@@ -1,6 +1,7 @@
 package algo;
 
 import structure.Matrix;
+import sun.reflect.generics.tree.Tree;
 
 import java.util.*;
 
@@ -52,7 +53,7 @@ public class Somme {
 
         for (Map.Entry<Integer,Integer> i : resultats.entrySet()) {
 
-            if (i.getValue() > tmp) {
+            if (i.getValue() >= tmp) {
                 tmp = i.getValue();
                 vainqueur = i.getKey();
             }
