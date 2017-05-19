@@ -26,7 +26,7 @@ public class PlurinominaleUnTour {
    public static Resultats votePlurinominaleUnTour(Matrix mat, int nbChoixPossible) {
 
        System.out.println("Nombre de choix : " + nbChoixPossible);
-       mat.GenAutoChoixMultiple(nbChoixPossible);
+       //mat.GenAutoChoixMultiple(nbChoixPossible);
        System.out.println(mat.toString());
 
        HashMap<Integer, Integer> stats = Somme.sommeDeUn(mat);
@@ -44,9 +44,9 @@ public class PlurinominaleUnTour {
        System.out.println(resultats);
 
        System.out.print("Tableau de Statistiques : ");
-       System.out.println(mapTriee);
+       System.out.println(stats);
 
-       Resultats res = new Resultats(mapTriee,stats);
+       Resultats res = new Resultats(resultats,stats);
 
        System.out.println();
        System.out.println("Le vainqueur est le " + vainqueur + " avec : " + stats.get(vainqueur));

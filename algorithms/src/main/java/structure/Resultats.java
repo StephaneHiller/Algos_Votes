@@ -8,11 +8,27 @@ import java.util.TreeMap;
  */
 public class Resultats {
 
-    TreeMap<Integer, Integer> resultats;
-    HashMap<Integer, Integer> stats;
+    private TreeMap<Integer, Integer> resultats;
+    private HashMap<Integer, Integer> stats;
 
     public Resultats(TreeMap<Integer, Integer> resultats, HashMap<Integer, Integer> stats) {
         this.resultats = resultats;
+        this.stats = stats;
+    }
+
+    public TreeMap<Integer, Integer> getResultats() {
+        return resultats;
+    }
+
+    public void setResultats(TreeMap<Integer, Integer> resultats) {
+        this.resultats = resultats;
+    }
+
+    public HashMap<Integer, Integer> getStats() {
+        return stats;
+    }
+
+    public void setStats(HashMap<Integer, Integer> stats) {
         this.stats = stats;
     }
 }
