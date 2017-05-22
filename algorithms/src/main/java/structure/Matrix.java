@@ -32,7 +32,7 @@ public class Matrix {
     /**
      * Matrice de choix social
      */
-    private int tab[][];
+    private Byte tab[][];
 
     /**
      * Constructeur de matrice à partir d'un autre tableau à deux dimension
@@ -40,7 +40,7 @@ public class Matrix {
      * @param votants : nombre de votants
      * @param choix : nombre de choix
      */
-    public Matrix(int[][] tab, int votants, int choix) {
+    public Matrix(Byte[][] tab, int votants, int choix) {
         this.tab = tab;
         this.votants =votants;
         this.choix = choix;
@@ -57,7 +57,7 @@ public class Matrix {
 
         this.votants = nbVotants;
         this.choix =nbChoix;
-        tab = new int[this.choix][this.votants];
+        tab = new Byte[this.choix][this.votants];
         checkout();
     }
 
@@ -76,7 +76,7 @@ public class Matrix {
      * Méthode permettant de récupérer le tableau à deux dimensions
      * @return tab : tableau à deux dimensions
      */
-    public int[][] getTab() {
+    public Byte[][] getTab() {
         return tab;
     }
 
@@ -114,7 +114,7 @@ public class Matrix {
      * @param i : l'abscisse à laquelle on souhaite l'insérer
      * @param j : l'ordonnée à laquelle on souhaite l'insérer
      */
-    public void setCase(Integer val, int i, int j){
+    public void setCase(Byte val, int i, int j){
         tab[i][j] = val;
     }
 
@@ -177,10 +177,10 @@ public class Matrix {
      */
     public void GenAutoListePreferences(){
         int nb;
-        ArrayList<Integer> valeurs = new ArrayList();
+        ArrayList<Byte> valeurs = new ArrayList();
 
         for(int i=0; i<this.votants;i++){
-            for(int k=1; k<=this.getChoix();k++){
+            for(Byte k=1; k<=this.getChoix();k++){
                 valeurs.add(k);
             }
             for(int j=0; j< this.choix; j++){
@@ -191,15 +191,25 @@ public class Matrix {
         }
     }
 
+    public void GenAutoListJugementMajoritaire(int echelle) {
+        int nb;
+        for(int i=0; i<this.votants;i++){
+            for(int j=0; j< this.choix; j++){
+                nb = (int) (Math.random() * (echelle));
+                tab[j][i] = (byte) nb;
+            }
+        }
+    }
+
     /**
      * Méthode permettant d'afficher les informations d'une matrix sur la sortie écran
      */
     @Override
     public String toString() {
-        int[][] tab = getTab();
+        Byte[][] tab = getTab();
         String concat= "";
-        for (int i[] : tab){
-            for (Integer j : i){
+        for (Byte i[] : tab){
+            for (Byte j : i){
                 concat += j.toString() + " ";
             }
             concat += "\n";

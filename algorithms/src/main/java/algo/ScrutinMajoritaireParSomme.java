@@ -1,7 +1,7 @@
 package algo;
 
 import structure.Matrix;
-import structure.Resultats;
+import structure.Resultat;
 import structure.ValueComparator;
 
 import java.util.HashMap;
@@ -12,24 +12,16 @@ import java.util.TreeMap;
  */
 
 
-public class PlurinominaleUnTour {
+public class ScrutinMajoritaireParSomme {
 
     /***
      * Méthode de scrutin plurinominal à un tour. À partir d'un tableau initialisé et vide :
-     *     - génère un nombre nbChoixPossible de choix aléatoire pour chaque votant dans le tableau
-     *     - calcul la somme de chaque choix
-     *     - à partir des ces sommes, détermine le vainqueur
-     *     - affiche le tableau de résultats ainsi que le vainqueur
+     *     TODO
      * @param mat : matrice contenant les informations
-     * @param nbChoixPossible : le nombre de choix qui devront être générés dans le tableau
      */
-   public static Resultats votePlurinominaleUnTour(Matrix mat, int nbChoixPossible) {
+   public static Resultat voteScrutinMajoritaireParSomme(Matrix mat) {
 
-       System.out.println("Nombre de choix : " + nbChoixPossible);
-       //mat.GenAutoChoixMultiple(nbChoixPossible);
-       System.out.println(mat.toString());
-
-       HashMap<Integer, Integer> stats = Somme.sommeDeUn(mat);
+       HashMap<Integer, Integer> stats = Somme.somme(mat);
 
        Integer vainqueur = Somme.vainqueur(stats);
 
@@ -46,7 +38,7 @@ public class PlurinominaleUnTour {
        System.out.print("Tableau de Statistiques : ");
        System.out.println(stats);
 
-       Resultats res = new Resultats(resultats,stats);
+       Resultat res = new Resultat(resultats,stats);
 
        System.out.println();
        System.out.println("Le vainqueur est le " + vainqueur + " avec : " + stats.get(vainqueur));

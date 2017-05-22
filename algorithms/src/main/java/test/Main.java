@@ -1,13 +1,10 @@
 package test;
 
-import algo.Borda;
-import algo.PlurinominaleUnTour;
+import algo.JugementMajoritaire;
+import algo.ScrutinMajoritaireParSomme;
 import algo.UninominaleDeuxTours;
-import algo.UninominaleUnTour;
 import exception.MatrixFormatException;
 import structure.Matrix;
-
-import static algo.UninominaleUnTour.voteUninominaleUnTour;
 
 /**
  * Created by stephane on 12/05/17.
@@ -15,8 +12,8 @@ import static algo.UninominaleUnTour.voteUninominaleUnTour;
 public class Main {
 
     static Matrix initValeur(){
-        int votants = 50;
-        int choix = 5;
+        int votants = 10;
+        int choix = 10;
         Matrix mat = null;
         try {
             mat = new Matrix(votants,choix);
@@ -29,15 +26,21 @@ public class Main {
 
     public static void testUninominaleUnTour(){
         Matrix mat = initValeur();
+        mat.GenAutoChoixUnique();
+        System.out.println(mat.toString());
 
-        UninominaleUnTour.voteUninominaleUnTour(mat);
+        ScrutinMajoritaireParSomme.voteScrutinMajoritaireParSomme(mat);
     }
 
     public static void testPlurinominaleUnTour() {
 
         Matrix mat = initValeur();
+        mat.GenAutoChoixMultiple(3);
+        System.out.println(mat.toString());
+        System.out.println("Nombre de choix : " + 3);
 
-        PlurinominaleUnTour.votePlurinominaleUnTour(mat,3);
+
+        ScrutinMajoritaireParSomme.voteScrutinMajoritaireParSomme(mat);
     }
 
     public static void testUninominaleDeuxTour(){
@@ -54,8 +57,19 @@ public class Main {
     public static void testBorda(){
 
         Matrix mat = initValeur();
+        mat.GenAutoListePreferences();
+        System.out.println(mat.toString());
 
-        Borda.voteBorda(mat);
+        ScrutinMajoritaireParSomme.voteScrutinMajoritaireParSomme(mat);
+    }
+
+    public static void testJugementMajoritaire(){
+
+        Matrix mat = initValeur();
+        mat.GenAutoListJugementMajoritaire(7);
+        System.out.println(mat.toString());
+
+        JugementMajoritaire.voteJugementMajoritaire(mat,7);
     }
 
     public static void main(String[] args) {
@@ -71,6 +85,9 @@ public class Main {
 */
         System.out.println("\n\n========= Borda ========= ");
         Main.testBorda();
+
+        System.out.println("\n\n========= Jugement majoritaire ========= ");
+        Main.testJugementMajoritaire();
 
     }
 }
