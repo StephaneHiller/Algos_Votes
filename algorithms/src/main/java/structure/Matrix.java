@@ -169,11 +169,12 @@ public class Matrix {
     }
 
     /**
-     * Méthode génère dans un tableau à deux dimensions une
+     * Méthode qui génère dans un tableau à deux dimensions une
      * liste de préférences. Cette liste est réprésenté par une
      * valeur comprise entre 1 et le nombre de choix du choix social.
      * Ces valeurs sont réparties aléatoirement pour
-     * chacun des candidats pour chacun des choix possibles
+     * chacun des candidats pour chacun des choix possibles. Les valeurs
+     * ne peuvent pas être répétées.
      */
     public void GenAutoListePreferences(){
         int nb;
@@ -191,6 +192,14 @@ public class Matrix {
         }
     }
 
+    /**
+     * Méthode qui génère dans un tableau à deux dimensions une
+     * liste de préférences. Cette liste est réprésenté par une
+     * valeur comprise entre 1 et le nombre de choix du choix social.
+     * Ces valeurs sont réparties aléatoirement pour
+     * chacun des candidats pour chacun des choix possibles. Les
+     * valeurs peuvent être répétées.
+     */
     public void GenAutoListJugementMajoritaire(int echelle) {
         int nb;
         for(int i=0; i<this.votants;i++){
@@ -203,6 +212,7 @@ public class Matrix {
 
     /**
      * Méthode permettant d'afficher les informations d'une matrix sur la sortie écran
+     * @return le string contenant l'affichage
      */
     @Override
     public String toString() {

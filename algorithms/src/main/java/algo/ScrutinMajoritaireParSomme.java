@@ -2,7 +2,7 @@ package algo;
 
 import structure.Matrix;
 import structure.Resultat;
-import structure.ValueComparator;
+import structure.DescendingComparator;
 
 import java.util.HashMap;
 import java.util.TreeMap;
@@ -25,7 +25,7 @@ public class ScrutinMajoritaireParSomme {
 
        Integer vainqueur = Somme.vainqueur(stats);
 
-       ValueComparator comparateur = new ValueComparator(stats);
+       DescendingComparator comparateur = new DescendingComparator(stats);
        TreeMap<Integer,Integer> mapTriee = new TreeMap<Integer,Integer>(comparateur);
        mapTriee.putAll(stats);
 

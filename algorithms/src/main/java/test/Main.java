@@ -12,8 +12,8 @@ import structure.Matrix;
 public class Main {
 
     static Matrix initValeur(){
-        int votants = 10;
-        int choix = 10;
+        int votants = 100;
+        int choix = 5;
         Matrix mat = null;
         try {
             mat = new Matrix(votants,choix);
