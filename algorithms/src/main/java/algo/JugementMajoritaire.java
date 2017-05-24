@@ -1,5 +1,6 @@
 package algo;
 
+import exception.MauvaiseEchelleJugementMajoritaireException;
 import structure.*;
 
 import java.util.ArrayList;
@@ -28,7 +29,12 @@ public class JugementMajoritaire {
          * Déclaration et initialisation d'une structure StructureJugementMajoritaire à partir de la Matrix passé en
          * paramètre et de l'échelle de niveau.
          */
-        StructureJugementMajoritaire tabStats = new StructureJugementMajoritaire(mat,echelle);
+        StructureJugementMajoritaire tabStats = null;
+        try {
+            tabStats = new StructureJugementMajoritaire(mat,echelle);
+        } catch (MauvaiseEchelleJugementMajoritaireException e) {
+            e.printStackTrace();
+        }
         /**
          * Calcul des statistiques des différents choix
          */

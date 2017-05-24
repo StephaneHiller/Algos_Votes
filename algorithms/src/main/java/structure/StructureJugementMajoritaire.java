@@ -1,5 +1,7 @@
 package structure;
 
+import exception.MauvaiseEchelleJugementMajoritaireException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -87,7 +89,7 @@ public class StructureJugementMajoritaire {
      * @param mat : l'objet Matrix contenant les infos du choix social
      * @param echelle : le nombre de niveau de l'échelle
      */
-    public StructureJugementMajoritaire(Matrix mat, int echelle) {
+    public StructureJugementMajoritaire(Matrix mat, int echelle) throws MauvaiseEchelleJugementMajoritaireException {
         this.echelle = echelle;
         tabPourcentage = new HashMap<Integer, ArrayList<Double>>();
         ArrayList<Double>  res;
@@ -98,6 +100,17 @@ public class StructureJugementMajoritaire {
                 res.add(0.0);
             }
             tabPourcentage.put(i,res);
+        }
+        checkout();
+    }
+
+
+    /**
+     * Méthode permettant de vérifier la validiter de la structure
+     */
+    private void checkout() throws MauvaiseEchelleJugementMajoritaireException {
+        if (this.echelle < 5 || this.echelle > 7) {
+            throw new MauvaiseEchelleJugementMajoritaireException();
         }
     }
 
