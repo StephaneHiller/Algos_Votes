@@ -2,7 +2,6 @@ package test;
 
 import algo.JugementMajoritaire;
 import algo.ScrutinMajoritaireParSomme;
-import algo.UninominaleDeuxTours;
 import exception.MatrixFormatException;
 import structure.Matrix;
 
@@ -43,17 +42,6 @@ public class Main {
         ScrutinMajoritaireParSomme.voteScrutinMajoritaireParSomme(mat);
     }
 
-    public static void testUninominaleDeuxTour(){
-        Matrix mat = initValeur();
-
-        long debut = System.currentTimeMillis();
-
-        int vainqueur = UninominaleDeuxTours.voteUninominaleDeuxTour(mat);
-
-        long duree = System.currentTimeMillis() - debut;
-        System.out.println("La durée est de : " + duree + " millisecondes");
-    }
-
     public static void testBorda(){
 
         Matrix mat = initValeur();
@@ -79,10 +67,7 @@ public class Main {
 
         System.out.println("\n\n========= Plurinominale à un tour ========= ");
         Main.testPlurinominaleUnTour();
-/*
-        System.out.println("\n\n========= Uninominale à deux tour ========= ");
-        Main.testUninominaleDeuxTour();
-*/
+
         System.out.println("\n\n========= Borda ========= ");
         Main.testBorda();
 

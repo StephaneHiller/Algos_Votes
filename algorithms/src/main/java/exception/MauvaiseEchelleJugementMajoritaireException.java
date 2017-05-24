@@ -3,6 +3,10 @@ package exception;
 /**
  * Created by stephane on 24/05/17.
  */
+
+/**
+ * Exception : le niveau de l'échelle doit être compris entre 5 et 7
+ */
 public class MauvaiseEchelleJugementMajoritaireException extends Exception {
     public MauvaiseEchelleJugementMajoritaireException(){
 

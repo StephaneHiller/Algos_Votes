@@ -3,6 +3,10 @@ package exception;
 /**
  * Created by stephane on 17/05/17.
  */
+
+/**
+ * Exception : le nombre de votant est plus important que le nombre de choix disponible, les résultats risquent de ne pas être pertinent voir faux
+ */
 public class RapportVottantChoixDisproportionneException extends MatrixFormatException {
     public RapportVottantChoixDisproportionneException(){
 
