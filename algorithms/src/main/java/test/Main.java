@@ -66,10 +66,10 @@ public class Main {
     public static void testJugementMajoritaire(){
 
         Matrix mat = initValeur();
-        mat.GenAutoListJugementMajoritaire(7);
+        mat.GenAutoListJugementMajoritaire(6);
         System.out.println(mat.toString());
 
-        JugementMajoritaire.voteJugementMajoritaire(mat,7);
+        JugementMajoritaire.voteJugementMajoritaire(mat,6);
     }
 
     public static void main(String[] args) {

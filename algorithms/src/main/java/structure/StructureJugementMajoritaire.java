@@ -291,24 +291,54 @@ public class StructureJugementMajoritaire {
     }
 
     /**
-     * Méthode permettant TODO
-     * @param tabResult
-     * @return
+     * Méthode permettant de récupérer le vainqueur du jugement majoritaire sous forme d'une map trié dans le cas ou il y a
+     * plusieurs choix avec la meme mention majoritaire. Le premier élément aura la forme :
+     * ex : {1} , {3} signifie que en première place, donc en vainqueur, se trouve le choix numéro 3
+     * @param tabResult : map servant pour départager le gagnant
+     * @return : la map contenant le vainqueur
      */
     public TreeMap<Integer,Integer> getVainqueurAvecEgalite(HashMap<Integer, ArrayList<Double>> tabResult){
+        /**
+         * booleen permettant de signifier si l'on a, ou non, trouvé le vainqueur
+         */
         Boolean vainqueurtrouve = false;
+        /**
+         * valeurs tampons
+         */
         Integer numChoix;
         Integer indexTmp;
         Double choixTmp;
+        /**
+         * initialisation de la map de sortie
+         */
         TreeMap<Integer,Integer> res = new TreeMap<Integer, Integer>();
 
+        /**
+         * Tant que l'on a pas trouvé le gagnant, on boucle
+         */
         while ( vainqueurtrouve == false) {
+            /**
+             * comme le but est de parcourir toutes les cases de tabResult à chaque fois, on initialise les valeurs
+             * tampons aux informations du premier élément de la map
+             */
             numChoix = (Integer) tabResult.keySet().toArray()[0];
             indexTmp = 0;
             choixTmp = tabResult.get(numChoix).get(0);
 
+            /**
+             * On boucle sur chaque élément contenu dans la map tabResult
+             */
             for(Map.Entry<Integer,ArrayList<Double>> entry : tabResult.entrySet()) {
+                /**
+                 * On boucle sur chaque élément contenu dans l'Arraylist contenu à l'intérieur de chque élément de la
+                 * map tabResult
+                 */
                 for (int i = 0 ; i < entry.getValue().size();i++){
+                    /**
+                     * si la valeur contenue dans l'Arraylist est plus grande que celle garder en mémoire, on la remplace.
+                     * si l'on  fait ca, on met dans numChoix la clé de l'élément tabResult (qui correspond au numéro
+                     * du choix) et dans indexTmp indice de la case de l'Arraylist, donc soit 0 soit 1.
+                     */
                     if (entry.getValue().get(i) > choixTmp) {
                         choixTmp = entry.getValue().get(i);
                         numChoix = entry.getKey();
@@ -316,19 +346,37 @@ public class StructureJugementMajoritaire {
                     }
                 }
             }
+            /**
+             * si l'indice de la case ayant la plus haute valeur est de 0, cela signifie qu'une majorité de personne
+             * pensent que le choix retenu dans numChoix mérite plus que ce qu'il a reçu et cela signifie qu'il doit
+             * gagner.
+             */
             if (indexTmp == 0) {
                 res.put(1,numChoix);
                 System.out.println("Le vainqueur est : " + numChoix.toString());
                 vainqueurtrouve=true;
             }
+            /**
+             * si l'indice de la case ayant la plus haute valeur est de 1, cela signifie qu'une majorité de personne
+             * pensent que le choix retenu dans numChoix mérite moins que ce qu'il a reçu et cela signifie qu'il doit
+             * être  retiré à condition qu'il ne soit pas le dernier choix disponible.
+             */
             else if (indexTmp == 1 && tabResult.size() > 1) {
                 tabResult.remove(numChoix);
-            } else {
+            }
+            /**
+             * si l'on arrive ici, cela signifie qu'il ne reste qu'un seul choix possible et donc que c'est celui-ci qui
+             * doit être le vainqeur.
+             */
+            else {
                 res.put(1,numChoix);
                 System.out.println("Le vainqueur est : " + numChoix.toString());
                 vainqueurtrouve=true;
             }
         }
+        /**
+         * on renvoie la map contenant le vainqueur
+         */
         return res;
     }
 

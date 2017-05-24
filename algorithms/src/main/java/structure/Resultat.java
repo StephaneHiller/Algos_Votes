@@ -50,4 +50,13 @@ public class Resultat {
     public void setStats(HashMap<Integer, Integer> stats) {
         this.stats = stats;
     }
+
+    @Override
+    public String toString() {
+        return "Resultat{" +
+                "resultats=" + resultats +
+                ", stats=" + stats +
+                ", statsJugementMajoritaire=" + statsJugementMajoritaire +
+                '}';
+    }
 }
