@@ -1,6 +1,7 @@
 package test;
 
 import algo.JugementMajoritaire;
+import algo.STV;
 import algo.ScrutinMajoritaireParSomme;
 import exception.MatrixFormatException;
 import structure.Matrix;
@@ -12,7 +13,7 @@ public class Main {
 
     static Matrix initValeur(){
         int votants = 100;
-        int choix = 5;
+        int choix = 7;
         Matrix mat = null;
         try {
             mat = new Matrix(votants,choix);
@@ -60,6 +61,17 @@ public class Main {
         JugementMajoritaire.voteJugementMajoritaire(mat,6);
     }
 
+    public static void testSTV(){
+        Matrix mat = initValeur();
+        int choixQuota = 1;
+        int choixPerdant = 2;
+        int nbGagnant = 3;
+        mat.GenAutoListePreferences();
+        System.out.println(mat.toString());
+        STV.voteSTV(mat, choixQuota, 1, nbGagnant);
+        STV.voteSTV(mat, choixQuota, choixPerdant, nbGagnant);
+    }
+
     public static void main(String[] args) {
 
         System.out.println("========= Uninominale à un tour ========= ");
@@ -73,6 +85,9 @@ public class Main {
 
         System.out.println("\n\n========= Jugement majoritaire ========= ");
         Main.testJugementMajoritaire();
+
+        System.out.println("\n\n========= STV ========= ");
+        Main.testSTV();
 
     }
 }
