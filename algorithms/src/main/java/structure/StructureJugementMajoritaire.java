@@ -34,7 +34,7 @@ public class StructureJugementMajoritaire {
     /**
      * Hashmap servant à identifié, pour chaque vote, sa mention majoritaire
      * parmis les mentions possible
-     * ex : soit une echelle - Très Bien / Bien / Sans Avis / Passable / Insuffisant
+     * ex : soit une echelle - Très Bien (0)/ Bien (1)/ Sans Avis (2)/ Passable (3)/ Insuffisant (4)
      *      on aura : choix 0 : 2 (Sans avis)
      *                choix 1 : 3 (Passable)
      *                choix 3 : 1 (Bien)

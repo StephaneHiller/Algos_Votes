@@ -76,6 +76,8 @@ public class JugementMajoritaire {
          */
         res.setStatsJugementMajoritaire(stats);
 
+        System.out.println(res);
+
         /**
          * renvoie l'objet Resultat contenant les informations du choix social
          */

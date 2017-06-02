@@ -44,8 +44,8 @@ public class STV {
          * Déclare une treemap et la rempli avec le tableau tabVainqueur pour rendre le résultat sous la forme souhaité
          */
         TreeMap<Integer,Integer> resultats = new TreeMap<Integer, Integer>();
-        for (int i =0; i<struct.getTabVainqueurs().size();i++){
-            resultats.put(i,struct.getTabVainqueurs().get(i).intValue());
+        for (int i =1; i<=struct.getTabVainqueurs().size();i++){
+            resultats.put(i,struct.getTabVainqueurs().get(i-1).intValue());
         }
         Resultat res = new Resultat(resultats,null);
         System.out.println(res);

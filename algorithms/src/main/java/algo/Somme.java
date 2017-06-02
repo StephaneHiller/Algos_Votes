@@ -59,8 +59,8 @@ public class Somme {
             }
         }
 
-        for (int i = 0; i < tmp.size(); i++) {
-            resultats.put(i,tmp.get(i));
+        for (int i = 1; i <= tmp.size(); i++) {
+            resultats.put(i,tmp.get(i - 1));
         }
 
         return resultats;

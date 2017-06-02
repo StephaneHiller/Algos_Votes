@@ -12,8 +12,8 @@ import structure.Matrix;
 public class Main {
 
     static Matrix initValeur(){
-        int votants = 100;
-        int choix = 7;
+        int votants = 300;
+        int choix = 3;
         Matrix mat = null;
         try {
             mat = new Matrix(votants,choix);
@@ -55,17 +55,17 @@ public class Main {
     public static void testJugementMajoritaire(){
 
         Matrix mat = initValeur();
-        mat.GenAutoListJugementMajoritaire(6);
+        mat.GenAutoListJugementMajoritaire(7);
         System.out.println(mat.toString());
 
-        JugementMajoritaire.voteJugementMajoritaire(mat,6);
+        JugementMajoritaire.voteJugementMajoritaire(mat,7);
     }
 
     public static void testSTV(){
         Matrix mat = initValeur();
         int choixQuota = 1;
-        int choixPerdant = 2;
-        int nbGagnant = 3;
+        int choixPerdant = 1;
+        int nbGagnant = 2;
         mat.GenAutoListePreferences();
         System.out.println(mat.toString());
         STV.voteSTV(mat, choixQuota, 1, nbGagnant);
